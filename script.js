@@ -160,17 +160,25 @@ function toggleShuffle(btn) {
 
 
 
-/* repeat */
+
 function toggleRepeat() {
   isRepeat = !isRepeat;
   event.target.classList.toggle("active", isRepeat);
 }
 
-/* hết bài */
 function toggleRepeat(btn) {
   isRepeat = !isRepeat;
   btn.classList.toggle("active", isRepeat);
 }
+audio.addEventListener("ended", () => {
+  if (isRepeat) {
+    // Repeat 1 bài
+    playSong(currentIndex);
+  } else {
+    // Chuyển bài tiếp theo
+    nextSong();
+  }
+});
  let i = 0;
 let typingTimer = null;
 
@@ -195,7 +203,6 @@ function showPopup() {
   popup.style.display = 'flex';
   popup.style.animation = 'fadeIn 1s ease';
 
-  // Reset lại mọi thứ trước khi đánh lại
   clearTimeout(typingTimer);
   i = 0;
   document.getElementById('typedMessage').innerHTML = "";
@@ -315,4 +322,5 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticIndex = (mysticIndex + 1) % mysticTexts.length;
 
     mysticTexts[mysticIndex].classList.add("active");
+
   }, 4500);
