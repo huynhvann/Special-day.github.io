@@ -174,57 +174,27 @@
     }
 
 .hidden-message {
-  margin-top: 30px;
+  margin: 28px auto;
+  padding: 24px 20px;
   text-align: center;
   min-height: 120px;
   position: relative;
 
   color: #d6336c; 
+  font-size: 1.2rem;
   font-weight: 600;
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.7;
+  line-height: 1.75;
 
-  animation:
-    fadeIn 2.5s ease-out,
-    glowSoft 6s ease-in-out infinite;
+
+  animation: fadeIn 2.2s ease-out;
 }
 
-  background: linear-gradient(
-    120deg,
-    #ff4d6d,
-    #ffd6e0,
-    #ff85a1,
-    #ffd6e0,
-    #ff4d6d
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 
-  animation:
-    fadeIn 2s ease-in-out,
-    shimmer 4s ease-in-out infinite;
-}
-@keyframes glowSoft {
-  0% {
-    text-shadow:
-      0 0 0px rgba(214, 51, 108, 0.2);
-  }
-  50% {
-    text-shadow:
-      0 0 6px rgba(214, 51, 108, 0.45),
-      0 0 12px rgba(214, 51, 108, 0.25);
-  }
-  100% {
-    text-shadow:
-      0 0 0px rgba(214, 51, 108, 0.2);
-  }
-}
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -232,46 +202,17 @@
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .sparkle {
   position: absolute;
-  font-size: 0.85rem;
-  opacity: 0;
-  filter: drop-shadow(0 0 4px rgba(214, 51, 108, 0.6));
-  animation: sparkleSoft 9s infinite ease-in-out;
+  right: 12px;
+  bottom: 12px;
+  font-size: 0.8rem;
+  opacity: 0.35;
 }
-
-.s1 { top: -6px; left: 12%; animation-delay: 0s; }
-.s2 { top: 40%; right: 8%; animation-delay: 3s; }
-.s3 { bottom: -6px; left: 70%; animation-delay: 6s; }
-
-@keyframes sparkleSoft {
-  0% {
-    opacity: 0;
-    transform: translateY(6px) scale(0.7);
-  }
-  25% {
-    opacity: 0.5;
-    transform: translateY(0) scale(1);
-  }
-  60% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.7);
-  }
-}
-
 
 @media (max-width: 480px) {
   .hidden-message {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -470,6 +411,7 @@
     transform: translateY(0);
   }
 }
+
 
 
 
