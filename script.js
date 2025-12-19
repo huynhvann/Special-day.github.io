@@ -73,6 +73,18 @@ let currentPlaylist = [];
 let currentIndex = 0;
 let isShuffle = false;
 let isRepeat = false;
+function updatePlayButton(isPlaying) {
+  const btn = document.getElementById("playBtn");
+  const icon = btn.querySelector("i");
+
+  if (isPlaying) {
+    icon.classList.replace("fa-play", "fa-pause");
+    btn.classList.add("active");
+  } else {
+    icon.classList.replace("fa-pause", "fa-play");
+    btn.classList.remove("active");
+  }
+}
 
 /* đổi playlist */
 function changePlaylist() {
@@ -103,13 +115,17 @@ function renderSongList() {
 function playSong(index) {
   currentIndex = index;
   audio.src = currentPlaylist[index].src;
-  audio.play();
+
+  audio.play().then(() => {
+    updatePlayButton(true);
+  });
 
   document.getElementById("nowPlaying").innerText =
     "🎧 Đang phát: " + currentPlaylist[index].title;
-document.getElementById("nowPlaying").style.animation = "none";
-void document.getElementById("nowPlaying").offsetWidth;
-document.getElementById("nowPlaying").style.animation = "fadeIn 0.4s ease";
+
+  document.getElementById("nowPlaying").style.animation = "none";
+  void document.getElementById("nowPlaying").offsetWidth;
+  document.getElementById("nowPlaying").style.animation = "fadeIn 0.4s ease";
 
   highlightSong();
 }
@@ -318,4 +334,5 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
