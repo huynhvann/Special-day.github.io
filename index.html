@@ -54,7 +54,7 @@
     const input = document.getElementById("password").value;
     if (input === PASSWORD) {
       localStorage.setItem("accessGranted", "yes");
-      window.location.href = "index.html";
+      window.location.href = "loading.html";
     } else {
       document.getElementById("error").innerText = "Sai mật khẩu rồi 😢";
     }
