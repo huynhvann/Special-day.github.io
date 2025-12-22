@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Nhập mật khẩu</title>
+<title>Cánh cửa bí mật</title>
 <style>
   body {
     background: linear-gradient(to right, #ffd6e8, #fff);
@@ -48,19 +48,17 @@
   </div>
 
 <script>
-  const PASSWORD = "phepmau"; // 🔑 đổi mật khẩu tại đây
+  const PASSWORD = "quockhanhMy";
 
   function checkPassword() {
     const input = document.getElementById("password").value;
     if (input === PASSWORD) {
       localStorage.setItem("accessGranted", "yes");
-      window.location.href = "loading.html";
+      window.location.href = "index.html";
     } else {
       document.getElementById("error").innerText = "Sai mật khẩu rồi 😢";
     }
   }
 </script>
-  
 </body>
 </html>
-
