@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nhập mật khẩu</title>
+<style>
+  body {
+    background: linear-gradient(to right, #ffd6e8, #fff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Segoe UI, sans-serif;
+  }
+  .box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  }
+  input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 220px;
+    margin-top: 10px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #ff85a2;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>🔐 Nhập mật khẩu</h2>
+    <input type="password" id="password" placeholder="Nhập mật khẩu nhaaa">
+    <br>
+    <button onclick="checkPassword()">Vào nè 💖</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+<script>
+  const PASSWORD = "phepmau"; // 🔑 đổi mật khẩu tại đây
+
+  function checkPassword() {
+    const input = document.getElementById("password").value;
+    if (input === PASSWORD) {
+      localStorage.setItem("accessGranted", "yes");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("error").innerText = "Sai mật khẩu rồi 😢";
+    }
+  }
+</script>
+  
+</body>
+</html>
 
