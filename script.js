@@ -191,7 +191,9 @@ let typingTimer = null;
 const message = `Hơi zô tri nhưng hãy đọc nhaaa
 
 Mai à, có lẽ đây là lần đầu tiên Văn làm điều này, và Văn không biết bắt đầu từ đâu. Chỉ biết rằng từ ngày gặp Mai, trái tim Văn chưa bao giờ rung động như thế. Mai là người khiến Văn muốn ở bên, muốn tìm hiểu, muốn bảo vệ và chăm sóc.
+
 Không hiểu vì sao, nhưng từng ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. Những phút giây bên Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy bình yên và hạnh phúc.
+
 Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết lòng và làm tất cả trong khả năng để Mai luôn vui vẻ và hạnh phúc.
 
 💫 Con nợ tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))
@@ -333,6 +335,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
