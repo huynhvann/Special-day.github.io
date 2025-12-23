@@ -6,142 +6,154 @@
 <title>Cánh cửa bí mật</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+* { box-sizing: border-box; }
 
-  body {
-    margin: 0;
-    height: 100vh;
-    font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #ffd6e8, #fff0f7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #fff0f7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
- 
-  .hearts span {
-    position: absolute;
-    color: #ff7aa2;
-    font-size: 20px;
-    animation: fall linear infinite;
-    opacity: 0.8;
-  }
+/* ===== HEART FALL ===== */
+.hearts span {
+  position: absolute;
+  color: #ff7aa2;
+  animation: fall linear infinite;
+  opacity: 0.85;
+}
 
-  @keyframes fall {
-    from {
-      transform: translateY(-10vh);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(110vh);
-      opacity: 1;
-    }
-  }
+@keyframes fall {
+  from { transform: translateY(-10vh); opacity: 0; }
+  to { transform: translateY(110vh); opacity: 1; }
+}
 
-  .gate-box {
-    position: relative;
-    z-index: 10;
-    width: 320px;
-    padding: 30px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    text-align: center;
-    animation: fadeIn 1s ease;
-  }
+/* ===== GATE BOX ===== */
+.gate-box {
+  position: relative;
+  z-index: 10;
+  width: 320px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .gate-box h2 {
-    margin: 0 0 10px;
-    color: #ff5f8a;
-  }
+.gate-box h2 {
+  margin-bottom: 10px;
+  color: #ff5f8a;
+}
 
-  .gate-box p {
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    color: #555;
-  }
+.gate-box p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
 
-  .password-wrapper {
-    position: relative;
-  }
+/* ===== INPUT ===== */
+.password-wrapper {
+  position: relative;
+}
 
-  input {
-    width: 100%;
-    padding: 12px 40px 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    outline: none;
-  }
+input {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+}
 
-  input:focus {
-    border-color: #ff7aa2;
-  }
+input:focus {
+  border-color: #ff7aa2;
+}
 
-  .toggle {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1.1rem;
-    color: #888;
-  }
+/* ===== EYE BUTTON ===== */
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
 
-  button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    background: linear-gradient(135deg, #ff85a2, #ff5f8a);
-    color: white;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+.eye-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #999;
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 0.2s ease, transform 0.2s ease;
+}
 
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 95, 138, 0.4);
-  }
+.eye-btn:hover svg {
+  stroke: #ff5f8a;
+  transform: scale(1.1);
+}
 
+#eyeClosed { display: none; }
 
-  .error {
-    margin-top: 12px;
-    font-size: 0.9rem;
-    color: #e74c3c;
-    min-height: 1em;
-  }
+/* ===== BUTTON ===== */
+button.main-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #ff85a2, #ff5f8a);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-  .shake {
-    animation: shake 0.4s;
-  }
+button.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,95,138,0.4);
+}
 
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-  }
+/* ===== ERROR / LOADING ===== */
+.error {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #e74c3c;
+  min-height: 1em;
+}
 
-  /* ===== LOADING ===== */
-  .loading {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #ff5f8a;
-    display: none;
-  }
+.loading {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ff5f8a;
+  display: none;
+}
+
+/* ===== SHAKE ===== */
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
 </style>
 </head>
 
@@ -151,63 +163,88 @@
 
 <div class="gate-box" id="gateBox">
   <h2>🔐 Cánh cửa bí mật</h2>
-  <p>Hỏi con nợ để biết mật khẩu nhaaaa✨</p>
+  <p>Hỏi con nợ để biết mật khẩu nhaaa ✨</p>
 
   <div class="password-wrapper">
     <input type="password" id="password" placeholder="Nhập mật khẩu nèee">
-    <span class="toggle" onclick="togglePassword()">👁️</span>
+    <button class="eye-btn" onclick="togglePassword()" aria-label="Hiện mật khẩu">
+      <!-- eye open -->
+      <svg id="eyeOpen" viewBox="0 0 24 24">
+        <path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/>
+        <circle cx="12" cy="12" r="3.5"/>
+      </svg>
+
+      <!-- eye closed -->
+      <svg id="eyeClosed" viewBox="0 0 24 24">
+        <path d="M2 2l20 20"/>
+        <path d="M1.5 12s4-7 10.5-7c2.2 0 4.1.7 5.7 1.7"/>
+        <path d="M22.5 12s-1.6 2.8-4.5 4.9"/>
+        <path d="M9.5 9.5a3.5 3.5 0 004.9 4.9"/>
+      </svg>
+    </button>
   </div>
 
-  <button onclick="checkPassword()">Mở cửa 💗</button>
+  <button class="main-btn" onclick="checkPassword()">Mở cửa 💗</button>
 
   <div class="error" id="error"></div>
   <div class="loading" id="loading">Đang mở cánh cửa phép màu...</div>
 </div>
 
 <script>
+const PASSWORD = "01012026";
 
-  const PASSWORD = "01012026";
+/* toggle password */
+function togglePassword() {
+  const input = document.getElementById("password");
+  const eyeOpen = document.getElementById("eyeOpen");
+  const eyeClosed = document.getElementById("eyeClosed");
 
-
-  function togglePassword() {
-    const input = document.getElementById("password");
-    input.type = input.type === "password" ? "text" : "password";
+  if (input.type === "password") {
+    input.type = "text";
+    eyeOpen.style.display = "none";
+    eyeClosed.style.display = "block";
+  } else {
+    input.type = "password";
+    eyeOpen.style.display = "block";
+    eyeClosed.style.display = "none";
   }
+}
 
+/* check password */
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  const box = document.getElementById("gateBox");
+  const loading = document.getElementById("loading");
 
-  function checkPassword() {
-    const input = document.getElementById("password").value;
-    const error = document.getElementById("error");
-    const box = document.getElementById("gateBox");
-    const loading = document.getElementById("loading");
+  if (input === PASSWORD) {
+    error.textContent = "";
+    loading.style.display = "block";
+    localStorage.setItem("accessGranted", "yes");
 
-    if (input === PASSWORD) {
-      error.textContent = "";
-      loading.style.display = "block";
-      localStorage.setItem("accessGranted", "yes");
-
-      setTimeout(() => {
-        window.location.href = "loading.html";
-      }, 1200);
-    } else {
-      error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
-      box.classList.remove("shake");
-      void box.offsetWidth;
-      box.classList.add("shake");
-    }
+    setTimeout(() => {
+      window.location.href = "loading.html";
+    }, 1200);
+  } else {
+    error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
+    box.classList.remove("shake");
+    void box.offsetWidth;
+    box.classList.add("shake");
   }
+}
 
-  const hearts = ["💗","💖","💘","💕"];
-  const heartBox = document.getElementById("hearts");
+/* hearts */
+const hearts = ["💗","💖","💘","💕"];
+const heartBox = document.getElementById("hearts");
 
-  for (let i = 0; i < 25; i++) {
-    const span = document.createElement("span");
-    span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-    span.style.left = Math.random() * 100 + "%";
-    span.style.animationDuration = (Math.random() * 5 + 5) + "s";
-    span.style.fontSize = (Math.random() * 10 + 14) + "px";
-    heartBox.appendChild(span);
-  }
+for (let i = 0; i < 25; i++) {
+  const span = document.createElement("span");
+  span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+  span.style.left = Math.random() * 100 + "%";
+  span.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  span.style.fontSize = (Math.random() * 10 + 14) + "px";
+  heartBox.appendChild(span);
+}
 </script>
 
 </body>
