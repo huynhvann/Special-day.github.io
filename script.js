@@ -76,12 +76,15 @@ let isRepeat = false;
 function updatePlayButton(isPlaying) {
   const btn = document.getElementById("playBtn");
   const icon = btn.querySelector("i");
+  const miniIcon = miniPlayBtn.querySelector("i");
 
   if (isPlaying) {
     icon.classList.replace("fa-play", "fa-pause");
+    miniIcon.classList.replace("fa-play", "fa-pause");
     btn.classList.add("active");
   } else {
     icon.classList.replace("fa-pause", "fa-play");
+    miniIcon.classList.replace("fa-pause", "fa-play");
     btn.classList.remove("active");
   }
 }
@@ -122,6 +125,7 @@ function playSong(index) {
 
   document.getElementById("nowPlaying").innerText =
     "🎧 Đang phát: " + currentPlaylist[index].title;
+miniTitle.innerText = "🎧 " + currentPlaylist[index].title;
 
   document.getElementById("nowPlaying").style.animation = "none";
   void document.getElementById("nowPlaying").offsetWidth;
@@ -333,6 +337,23 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
+
+const musicSection = document.querySelector(".music-player");
+const miniPlayer = document.getElementById("miniPlayer");
+const miniTitle = document.getElementById("miniTitle");
+const miniPlayBtn = document.getElementById("miniPlayBtn");
+
+window.addEventListener("scroll", () => {
+  const rect = musicSection.getBoundingClientRect();
+
+
+  if (rect.bottom < 0 || rect.top > window.innerHeight) {
+    miniPlayer.classList.add("show");
+  } else {
+    miniPlayer.classList.remove("show");
+  }
+});
 
 
 
