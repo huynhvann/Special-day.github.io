@@ -2,63 +2,213 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cánh cửa bí mật</title>
+
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    background: linear-gradient(to right, #ffd6e8, #fff);
+    margin: 0;
     height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #fff0f7);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Segoe UI, sans-serif;
+    overflow: hidden;
   }
-  .box {
-    background: white;
+
+ 
+  .hearts span {
+    position: absolute;
+    color: #ff7aa2;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes fall {
+    from {
+      transform: translateY(-10vh);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(110vh);
+      opacity: 1;
+    }
+  }
+
+  .gate-box {
+    position: relative;
+    z-index: 10;
+    width: 320px;
     padding: 30px;
     border-radius: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    animation: fadeIn 1s ease;
   }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .gate-box h2 {
+    margin: 0 0 10px;
+    color: #ff5f8a;
+  }
+
+  .gate-box p {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .password-wrapper {
+    position: relative;
+  }
+
   input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 220px;
-    margin-top: 10px;
+    width: 100%;
+    padding: 12px 40px 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    outline: none;
   }
+
+  input:focus {
+    border-color: #ff7aa2;
+  }
+
+  .toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #888;
+  }
+
   button {
-    margin-top: 15px;
-    padding: 10px 25px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
     border: none;
     border-radius: 20px;
-    background: #ff85a2;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #ff85a2, #ff5f8a);
     color: white;
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 95, 138, 0.4);
+  }
+
+
+  .error {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #e74c3c;
+    min-height: 1em;
+  }
+
+  .shake {
+    animation: shake 0.4s;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* ===== LOADING ===== */
+  .loading {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #ff5f8a;
+    display: none;
   }
 </style>
 </head>
 
 <body>
-  <div class="box">
-    <h2>🔐 Nhập mật khẩu</h2>
-    <input type="password" id="password" placeholder="Nhập mật khẩu nhaaa">
-    <br>
-    <button onclick="checkPassword()">Vào nè 💖</button>
-    <p id="error" style="color:red;"></p>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="gate-box" id="gateBox">
+  <h2>🔐 Cánh cửa bí mật</h2>
+  <p>Nhập đúng mật khẩu thì phép màu mới xuất hiện ✨</p>
+
+  <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Nhập mật khẩu nèee">
+    <span class="toggle" onclick="togglePassword()">👁️</span>
   </div>
 
+  <button onclick="checkPassword()">Mở cửa 💗</button>
+
+  <div class="error" id="error"></div>
+  <div class="loading" id="loading">Đang mở cánh cửa phép màu...</div>
+</div>
+
 <script>
-  const PASSWORD = "quockhanhMy";
+
+  const PASSWORD = "01012026";
+
+
+  function togglePassword() {
+    const input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+  }
+
 
   function checkPassword() {
     const input = document.getElementById("password").value;
+    const error = document.getElementById("error");
+    const box = document.getElementById("gateBox");
+    const loading = document.getElementById("loading");
+
     if (input === PASSWORD) {
+      error.textContent = "";
+      loading.style.display = "block";
       localStorage.setItem("accessGranted", "yes");
-      window.location.href = "loading.html";
+
+      setTimeout(() => {
+        window.location.href = "loading.html";
+      }, 1200);
     } else {
-      document.getElementById("error").innerText = "Sai mật khẩu rồi 😢";
+      error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
+      box.classList.remove("shake");
+      void box.offsetWidth;
+      box.classList.add("shake");
     }
   }
+
+  const hearts = ["💗","💖","💘","💕"];
+  const heartBox = document.getElementById("hearts");
+
+  for (let i = 0; i < 25; i++) {
+    const span = document.createElement("span");
+    span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    span.style.left = Math.random() * 100 + "%";
+    span.style.animationDuration = (Math.random() * 5 + 5) + "s";
+    span.style.fontSize = (Math.random() * 10 + 14) + "px";
+    heartBox.appendChild(span);
+  }
 </script>
+
 </body>
 </html>
