@@ -411,6 +411,56 @@
     transform: translateY(0);
   }
 }
+/* ===== MINI PLAYER ===== */
+.mini-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 280px;
+  background: rgba(255, 240, 247, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(214, 107, 178, 0.35);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.mini-player.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mini-info {
+  font-size: 13px;
+  color: #c94c9f;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-controls button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #d26bb2;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+.mini-controls button:hover {
+  transform: scale(1.15);
+}
+
 
 
 
