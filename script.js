@@ -190,11 +190,11 @@ let typingTimer = null;
 
 const message = `Hơi zô tri nhưng hãy đọc nhaaa
 
-Mai à, có lẽ đây là lần đầu tiên Văn làm điều này, và Văn không biết bắt đầu từ đâu. Chỉ biết rằng từ ngày gặp Mai, trái tim Văn chưa bao giờ rung động như thế. Mai là người khiến Văn muốn ở bên, muốn tìm hiểu, muốn bảo vệ và chăm sóc.
+Mai à, có lẽ đây là lần đầu tiên Văn làm điều này, Văn không biết nên bắt đầu từ đâu. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn chưa bao giờ rung động như thế. Mai là người khiến Văn lúc nào cũng muốn gặp, muốn ở bên, muốn tìm hiểu, muốn bảo vệ và chăm sóc.
 
-Không hiểu vì sao, nhưng từng ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. Những phút giây bên Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy bình yên và hạnh phúc.
+Không hiểu vì sao, nhưng mỗi ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. Những phút giây bên Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy bình yên và hạnh phúc.
 
-Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết lòng và làm tất cả trong khả năng để Mai luôn vui vẻ và hạnh phúc.
+Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm tất cả trong khả năng để Mai luôn vui vẻ và hạnh phúc.
 
 💫 Con nợ tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))
 
@@ -271,7 +271,7 @@ function showRatingMessage() {
 function askQuestion() {
   Swal.fire({
     title: '💌 Đố Mai nha 💌',
-    text: 'Đối với Văn, ngày đặc biệt nhất là ngày bao nhiêu?',
+    text: 'Đối với Văn, ngày đặc biệt nhất và ý nghĩa nhất là ngày bao nhiêu?',
     input: 'text',
     confirmButtonText: 'Trả lời 💖',
     confirmButtonColor: '#f48fb1',
@@ -293,13 +293,14 @@ function askQuestion() {
       '06/9',
       '6 tháng 9',
       '6/09',
+      'ngày Văn gặp Mai',
       'ngày văn gặp mai'
     ];
 
     if (correctAnswers.includes(answer)) {
       Swal.fire({
         title: '🎉 Đúng rồi đó 🎉',
-        text: 'Mai giỏi quá, Văn mở thiệp nha 💕',
+        text: 'Bạn Mai giỏi quá, mở thiệp nha 💕',
         icon: 'success',
         confirmButtonText: 'Mở thiệp nè 🥰',
         confirmButtonColor: '#f48fb1',
@@ -335,6 +336,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
