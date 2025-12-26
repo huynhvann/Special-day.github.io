@@ -44,6 +44,7 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   text-align: center;
   animation: fadeIn 1s ease;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
@@ -59,87 +60,6 @@ body {
 .gate-box p {
   font-size: 0.95rem;
   color: #555;
-  margin-bottom: 20px;
-}
-
-/* ===== INPUT ===== */
-.password-wrapper {
-  position: relative;
-}
-
-input {
-  width: 100%;
-  padding: 12px 44px 12px 14px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  outline: none;
-}
-
-input:focus {
-  border-color: #ff7aa2;
-}
-
-/* ===== EYE BUTTON ===== */
-.eye-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.eye-btn svg {
-  width: 22px;
-  height: 22px;
-  stroke: #999;
-  stroke-width: 2;
-  fill: none;
-  transition: stroke 0.2s ease, transform 0.2s ease;
-}
-
-.eye-btn:hover svg {
-  stroke: #ff5f8a;
-  transform: scale(1.1);
-}
-
-#eyeClosed { display: none; }
-
-/* ===== BUTTON ===== */
-button.main-btn {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  background: linear-gradient(135deg, #ff85a2, #ff5f8a);
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-button.main-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255,95,138,0.4);
-}
-
-/* ===== ERROR / LOADING ===== */
-.error {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #e74c3c;
-  min-height: 1em;
-}
-
-.loading {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #ff5f8a;
-  display: none;
 }
 
 /* ===== SHAKE ===== */
@@ -158,61 +78,36 @@ button.main-btn:hover {
 </head>
 
 <body>
-<!-- Audio -->
-<audio id="mainAudio" autoplay loop >
-  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
+
+<!-- AUDIO -->
+<audio id="mainAudio" loop preload="auto">
+  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc Offical MV.mp3" type="audio/mpeg">
 </audio>
+
+<!-- HEARTS -->
 <div class="hearts" id="hearts"></div>
 
+<!-- BOX -->
 <div class="gate-box" id="gateBox">
   <h2>Giỏi quá ta, nhưng trailer tới đấy thoiiii =)))</h2>
-  <p>Đợi tới ngày 01/01/2026 nhaaaa💗</p>
+  <p>Đợi tới ngày 01/01/2026 nhaaaa 💗</p>
+  <small>(chạm nhẹ 1 cái đi 😝)</small>
 </div>
 
 <script>
-const PASSWORD = "01/01/2026";
+/* ===== AUTOPLAY FIX ===== */
+const audio = document.getElementById("mainAudio");
 
-/* toggle password */
-function togglePassword() {
-  const input = document.getElementById("password");
-  const eyeOpen = document.getElementById("eyeOpen");
-  const eyeClosed = document.getElementById("eyeClosed");
-
-  if (input.type === "password") {
-    input.type = "text";
-    eyeOpen.style.display = "none";
-    eyeClosed.style.display = "block";
-  } else {
-    input.type = "password";
-    eyeOpen.style.display = "block";
-    eyeClosed.style.display = "none";
-  }
+function enableAudio() {
+  audio.play().catch(() => {});
+  document.removeEventListener("click", enableAudio);
+  document.removeEventListener("touchstart", enableAudio);
 }
 
-/* check password */
-function checkPassword() {
-  const input = document.getElementById("password").value;
-  const error = document.getElementById("error");
-  const box = document.getElementById("gateBox");
-  const loading = document.getElementById("loading");
+document.addEventListener("click", enableAudio);
+document.addEventListener("touchstart", enableAudio);
 
-  if (input === PASSWORD) {
-    error.textContent = "";
-    loading.style.display = "block";
-    localStorage.setItem("accessGranted", "yes");
-
-    setTimeout(() => {
-      window.location.href = "loading.html";
-    }, 1200);
-  } else {
-    error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
-    box.classList.remove("shake");
-    void box.offsetWidth;
-    box.classList.add("shake");
-  }
-}
-
-/* hearts */
+/* ===== HEART FALL ===== */
 const hearts = ["💗","💖","💘","💕"];
 const heartBox = document.getElementById("hearts");
 
@@ -225,15 +120,6 @@ for (let i = 0; i < 25; i++) {
   heartBox.appendChild(span);
 }
 </script>
- <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-  if (localStorage.getItem("accessGranted") !== "yes") {
-    window.location.href = "index.html";
-  }
-</script>
+
 </body>
 </html>
-
-
-
