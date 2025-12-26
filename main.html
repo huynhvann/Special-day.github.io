@@ -1,188 +1,227 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special-day</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liu Liu</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #fff0f7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ===== HEART FALL ===== */
+.hearts span {
+  position: absolute;
+  color: #ff7aa2;
+  animation: fall linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh); opacity: 0; }
+  to { transform: translateY(110vh); opacity: 1; }
+}
+
+/* ===== GATE BOX ===== */
+.gate-box {
+  position: relative;
+  z-index: 10;
+  width: 320px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gate-box h2 {
+  margin-bottom: 10px;
+  color: #ff5f8a;
+}
+
+.gate-box p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ===== INPUT ===== */
+.password-wrapper {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff7aa2;
+}
+
+/* ===== EYE BUTTON ===== */
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.eye-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #999;
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 0.2s ease, transform 0.2s ease;
+}
+
+.eye-btn:hover svg {
+  stroke: #ff5f8a;
+  transform: scale(1.1);
+}
+
+#eyeClosed { display: none; }
+
+/* ===== BUTTON ===== */
+button.main-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #ff85a2, #ff5f8a);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,95,138,0.4);
+}
+
+/* ===== ERROR / LOADING ===== */
+.error {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #e74c3c;
+  min-height: 1em;
+}
+
+.loading {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ff5f8a;
+  display: none;
+}
+
+/* ===== SHAKE ===== */
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+</style>
 </head>
+
 <body>
-<!-- Audio -->
-<audio id="mainAudio" autoplay >
-  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
-</audio>
 
-<div class="floating-stars" id="star-container"></div>
-<div class="heart-rain" id="heart-container"></div>
+<div class="hearts" id="hearts"></div>
 
-  <div class="floating-stars" id="star-container"></div>
-  <div class="heart-rain" id="heart-container"></div>
-
-  <header>
-    <h1>Special-day</h1>
-    <p style="font-family: 'Pacifico', cursive;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    animation: fadeInDown 2s ease-out;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);">Hãy cùng mở ra bất ngờ nho nhỏ nhé 🌙</p>
-    <button onclick="scrollToSection()">Khám phá ngay</button>
-  </header>
-
-  <section id="main-content">
-    <h2>Đố Mai mở được thiệp</h2>
-    <div class="card-container">
-     
-      <div class="birthday-card" onclick="askQuestion()">
-        
-      </div>
-    </div>
-
-<h2>Nghe nhạc nha 🎼</h2>
-
-<div class="music-player">
-
-  <!-- chọn playlist -->
-  <select id="playlistSelect" onchange="changePlaylist()">
-    <option value="">🎧 Chọn playlist</option>
-    <option value="playlists01">💖 0 💖</option>
-    <option value="playlists02">💖 4 💖</option>
-    <option value="playlists03">💖 5 💖</option>
-    <option value="playlists04">💖 6 💖</option>
-    <option value="playlists05">💖 9 💖</option>
-    <option value="playlists06">💖 2 💖</option>
-  </select>
-
-  <!-- thông tin bài -->
-  <p id="nowPlaying">🎵 Chưa phát bài nào</p>
-
-  <!-- controls -->
-<div class="controls">
-  <button onclick="prevSong()"><i class="fa-solid fa-backward"></i></button>
-
-  <button id="playBtn" onclick="togglePlay()">
-    <i class="fa-solid fa-play"></i>
-  </button>
-
-  <button onclick="nextSong()"><i class="fa-solid fa-forward"></i></button>
-
-  <button id="shuffleBtn" onclick="toggleShuffle(this)">
-    <i class="fa-solid fa-shuffle"></i>
-  </button>
-
-  <button id="repeatBtn" onclick="toggleRepeat(this)">
-    <i class="fa-solid fa-repeat"></i>
-  </button>
+<div class="gate-box" id="gateBox">
+  <h2>Giỏi quá ta, nhưng trailer tới đấy thoiiii</h2>
+  <p>✨Đợi tới ngày 01/01/2026 nhaaaa💗 ✨</p>
 </div>
 
-  <!-- danh sách bài -->
-  <ul id="songList"></ul>
-</div>
+<script>
+const PASSWORD = "01/01/2026";
 
-    <!-- <h2>Nghe nhạc nha 🎼 </h2>
-    <div class="music-section">
+/* toggle password */
+function togglePassword() {
+  const input = document.getElementById("password");
+  const eyeOpen = document.getElementById("eyeOpen");
+  const eyeClosed = document.getElementById("eyeClosed");
 
-  <div class="playlist" onclick="togglePlaylist(this)">
-    💖 Playlist: Romantic
-    <ul class="song-list">
-      <li onclick="playSongFromList(event, 'assets/images/Ed Sheeran - Perfect (Official Music Video).mp3')">
-        🎵 Perfect – Ed Sheeran
-      </li>
-      <li onclick="playSongFromList(event, 'img/A Thousand Years.mp3')">
-        🎵 A Thousand Years – Christina Perri
-      </li>
-    </ul>
-  </div>
-
-  <div class="playlist" onclick="togglePlaylist(this)">
-    🇯🇵 Playlist: J-Pop
-    <ul class="song-list">
-      <li onclick="playSongFromList(event, 'img/宇多田ヒカル - First Love.mp3')">
-        🎵 First Love – 宇多田ヒカル
-      </li>
-      <li onclick="playSongFromList(event, 'img/Novelbright - 愛結び.mp3')">
-        🎵 愛結び – Novelbright
-      </li>
-    </ul>
-  </div> -->
-
-</div>
-    <h2 class="title">Zô tri 👀</h2>
-
-  <div class="gift-box">
- <div class="hidden-message">
-      🌟 "Từng khoảnh khắc bên cạnh em đều óng ánh phép màu cổ tích"
-      <span class="sparkle">✨</span>
-    </div>
-
-    <div class="hidden-message">
-      🌟 "Tất cả những con số, mật khẩu và bài hát trên trang web này<br>
-      đều mang một ý nghĩa nào đó —<br>
-      Văn mong rằng Mai sẽ cảm nhận và hiểu được nhaa 💗"
-      <span class="sparkle">🌟</span>
-    </div>
-
-  </div>
-
-  <div style="text-align: center; margin-top: 60px; font-family: 'Segoe UI', sans-serif;">
-  <h2 style="color: #d26bb2;">💫 Mai thấy trang web này như nào? 💫</h2>
-
-  <select id="rating-select" onchange="showRatingMessage()" 
-    style="
-      font-size: 18px; 
-      padding: 10px 20px; 
-      border: 2px solid #f5b6d4; 
-      border-radius: 12px; 
-      background: #fff0f7; 
-      color: #c94c9f;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    "
-    onmouseover="this.style.boxShadow='0 0 15px #f5b6d4'"
-    onmouseout="this.style.boxShadow='none'"
-  >
-    <option value="">🌸 Chọn một cảm xúc 🌸</option>
-    <option value="Tuyệt">✨ Tuyệt ✨</option>
-    <option value="Rất đẹp">🌷 Rất đẹp 🌷</option>
-    <option value="Đủ wow">🌟 Đủ wow 🌟</option>
-    <option value="Không điểm chê">💎 Không điểm chê 💎</option>
-  </select>
-</div>
-  </section>
-
-  <footer>
-    Tạo bởi một người zô triiii =)) 💕 —  01/01/2026
-  </footer>
-<!-- Popup thiệp -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <button class="close-btn" onclick="closePopup()">×</button>
-    <p id="typedMessage"></p>
-  </div>
-</div>
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-  if (localStorage.getItem("accessGranted") !== "yes") {
-    window.location.href = "index.html";
+  if (input.type === "password") {
+    input.type = "text";
+    eyeOpen.style.display = "none";
+    eyeClosed.style.display = "block";
+  } else {
+    input.type = "password";
+    eyeOpen.style.display = "block";
+    eyeClosed.style.display = "none";
   }
+}
+
+/* check password */
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  const box = document.getElementById("gateBox");
+  const loading = document.getElementById("loading");
+
+  if (input === PASSWORD) {
+    error.textContent = "";
+    loading.style.display = "block";
+    localStorage.setItem("accessGranted", "yes");
+
+    setTimeout(() => {
+      window.location.href = "loading.html";
+    }, 1200);
+  } else {
+    error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
+    box.classList.remove("shake");
+    void box.offsetWidth;
+    box.classList.add("shake");
+  }
+}
+
+/* hearts */
+const hearts = ["💗","💖","💘","💕"];
+const heartBox = document.getElementById("hearts");
+
+for (let i = 0; i < 25; i++) {
+  const span = document.createElement("span");
+  span.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+  span.style.left = Math.random() * 100 + "%";
+  span.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  span.style.fontSize = (Math.random() * 10 + 14) + "px";
+  heartBox.appendChild(span);
+}
 </script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
