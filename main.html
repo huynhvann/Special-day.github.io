@@ -5,18 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Liu Liu</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 <style>
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   height: 100vh;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Quicksand", sans-serif;
   background: linear-gradient(135deg, #ffd6e8, #fff0f7);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 /* ===== HEART FALL ===== */
@@ -25,6 +32,7 @@ body {
   color: #ff7aa2;
   animation: fall linear infinite;
   opacity: 0.85;
+  pointer-events: none;
 }
 
 @keyframes fall {
@@ -32,14 +40,21 @@ body {
   to { transform: translateY(110vh); opacity: 1; }
 }
 
-/* ===== BOX ===== */
-.gate-box {
+/* ===== MAIN WRAPPER ===== */
+.wrapper {
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== BOX ===== */
+.gate-box {
   width: 320px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.65);
+  padding: 28px 24px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(14px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   text-align: center;
@@ -47,45 +62,71 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .gate-box h2 {
-  margin-bottom: 10px;
+  font-family: "Pacifico", cursive;
+  margin-bottom: 8px;
   color: #ff5f8a;
+  font-size: 1.4rem;
 }
 
 .gate-box p {
   font-size: 0.95rem;
   color: #555;
+  margin-bottom: 6px;
+}
+
+.gate-box small {
+  font-size: 0.8rem;
+  color: #ff85a2;
+}
+
+/* ===== RABBIT ===== */
+.rabbit {
+  margin-top: 14px;
+  width: 120px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 </style>
- <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
 </head>
 
 <body>
 
-
-<audio id="mainAudio" autoplay loop >
-  <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
+<!-- ===== AUDIO ===== -->
+<audio id="mainAudio" autoplay loop preload="auto">
+  <source src="assets/music/phep-mau-maydays.mp3" type="audio/mpeg">
 </audio>
 
 <!-- HEARTS -->
 <div class="hearts" id="hearts"></div>
 
 <!-- CONTENT -->
-<div class="gate-box">
-  <h2>Giỏi quá ta, nhưng trailer tới đấy thoiiii =)))</h2>
-  <p>Đợi tới ngày 01/01/2026 nhaaaa 💗</p>
-  <small> hun nhẹ 1 cái iii =)))) </small>
+<div class="wrapper">
+  <div class="gate-box">
+    <h2>Giỏi quá ta~</h2>
+    <p>Nhưng trailer tới đấy thoiiii =)))</p>
+    <small>Đợi tới ngày 01/01/2026 nhaaaa 💗</small>
+  </div>
+
+  <img src="assets/images/rabbit.gif" alt="rabbit" class="rabbit">
 </div>
-<img src="assets/images/rabbit.gif" width="auto" height="auto">
+
+<script>
+/* ===== FORCE AUDIO PLAY (khi browser đã allow autoplay) ===== */
+const audio = document.getElementById("mainAudio");
+window.addEventListener("load", () => {
+  audio.volume = 1;
+  audio.play().catch(() => {});
+});
+
 /* ===== HEART FALL ===== */
 const hearts = ["💗","💖","💘","💕"];
 const heartBox = document.getElementById("hearts");
@@ -99,14 +140,6 @@ for (let i = 0; i < 25; i++) {
   heartBox.appendChild(span);
 }
 </script>
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>
-
-
-
-
-
-
