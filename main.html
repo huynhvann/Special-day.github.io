@@ -171,6 +171,9 @@
   if (localStorage.getItem("accessGranted") !== "yes") {
     window.location.href = "index.html";
   }
+    window.addEventListener("beforeunload", () => {
+  localStorage.removeItem("accessGranted");
+});
 </script>
 </body>
 
