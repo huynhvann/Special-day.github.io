@@ -202,7 +202,7 @@ Chính vì vậy mà mỗi ngày trôi qua, Văn luôn tìm cho mình một lý 
 
 Văn không dám nói trước tương lai sẽ thế nào, nhưng ở thời điểm hiện tại, Văn chỉ mong Mai hiểu rằng:
 
-"Dù có chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm hết khả năng để Mai luôn thật vui vẻ và thật hạnh phúc.
+"Dù có chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm hết khả năng để Mai luôn thật vui vẻ và thật hạnh phúc"
 
 💫 Con nợ tên Văn, không giỏi văn cho lắm, nên bạn Mike bỏ qua nha =))))
 
@@ -302,6 +302,7 @@ function askQuestion() {
       '6 tháng 9',
       '6/09',
       'ngày Văn gặp Mai',
+      '0609',
       'ngày văn gặp mai'
     ];
 
@@ -344,6 +345,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
