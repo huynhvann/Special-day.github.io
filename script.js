@@ -190,15 +190,21 @@ let typingTimer = null;
 
 const message = `Hơi zô tri nhưng Mai hãy đọc nhaaa
 
-Mai ơi, Đây là lần đầu tiên Văn làm như này, Văn không biết nên bắt đầu từ đâu. Có lẽ từ cái ngày đầu tiên về Long Thành, trái tim Văn đã bắt đầu rung động. Trong khoản thời gian ấy suy nghĩ của Văn là lúc nào cũng muốn thấy, muốn gặp, muốn ở bên, muốn tìm hiểu ròiiiii dần dần lại muốn bảo vệ, chăm sóc và quan tâm nhiều hơn. Xin lũi vì đã tham lam như vậy.
+Mai ơi, 
 
-Chính vì như thế mỗi ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. khoảng thời gian bên cạnh Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy vui và hạnh phúc.
+Đây là lần đầu tiên Văn làm những điều như thế này, nên có lẽ Văn không biết nên bắt đầu từ đâu cho trọn vẹn. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn đã bắt đầu rung động lúc nào hong hay. 
 
-Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm tất cả trong khả năng để Mai luôn thật vui vẻ và thật hạnh phúc.
+Trong khoản thời gian dó, suy nghĩ của Văn là lúc nào cũng muốn được thấy Mai, muốn gặp Mai, muốn ở bên và tìm hiểu Mai nhiều hơn. Ròiiiii dần dần, những cảm xúc ấy lớn lên thành mong muốn được bảo vệ, chăm sóc và quan tâm Mai nhiều hơn nữa. Xin lũi nếu điều đó được cho là tham lam =)))
 
-💫 Con nợ tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))
+Chính vì vậy mà mỗi ngày trôi qua, Văn luôn tìm cho mình một lý do để được gần Mai hơn một chút. Những khoảng khắc bên cạnh Mai, dù chỉ là những điều rất đơn giản, cũng đủ khiến Văn cảm thấy vui và hạnh phúc.
 
-💫 Con nợ chỉ giỏi Yêuuuu chủ nợ thoiiiii =))))) 💖`;
+Văn không dám nói trước tương lai sẽ thế nào, nhưng ở thời điểm hiện tại, Văn chỉ mong Mai hiểu rằng:
+
+"Dù có chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm hết khả năng để Mai luôn thật vui vẻ và thật hạnh phúc.
+
+💫 Con nợ tên Văn, không giỏi văn cho lắm, nên bạn Mike bỏ qua nha =))))
+
+💫 Nhưng con nợ lại rất giỏi… yêu chủ nợ thoiiiii =))))) 💖`;
 
 function typeMessage() {
   const typedMessage = document.getElementById('typedMessage');
@@ -336,6 +342,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
