@@ -191,7 +191,7 @@ button.main-btn:hover {
 </div>
 
 <script>
-const PASSWORD = "01012026";
+const PASSWORD = "28122025";
 
 /* toggle password */
 function togglePassword() {
@@ -213,24 +213,19 @@ function togglePassword() {
 /* check password */
 function checkPassword() {
   const input = document.getElementById("password").value;
-  const error = document.getElementById("error");
-  const box = document.getElementById("gateBox");
   const loading = document.getElementById("loading");
 
-  if (input === PASSWORD) {
-    error.textContent = "";
-    loading.style.display = "block";
-    localStorage.setItem("accessGranted", "yes");
+  loading.style.display = "block";
 
-    setTimeout(() => {
-      window.location.href = "loading.html";
-    }, 1200);
-  } else {
-    error.textContent = "Sai mật khẩu rồi 😢 thử lại nha";
-    box.classList.remove("shake");
-    void box.offsetWidth;
-    box.classList.add("shake");
-  }
+  setTimeout(() => {
+    if (input === PASSWORD) {
+  
+      window.location.href = "main.html";
+    } else {
+     
+      window.location.href = "liuliu.html";
+    }
+  }, 1000);
 }
 
 /* hearts */
