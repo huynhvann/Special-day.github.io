@@ -282,6 +282,7 @@ function askQuestion() {
       '06/9',
       '6 tháng 9',
       '6/09',
+       '0609',
       'ngày Văn gặp Mai',
       'ngày văn gặp mai'
     ];
@@ -350,6 +351,7 @@ function unlockAndPlay() {
 
 document.addEventListener("touchstart", unlockAndPlay, { once: true });
 document.addEventListener("click", unlockAndPlay, { once: true });
+
 
 
 
