@@ -1,33 +1,43 @@
-    function scrollToSection() {
-      document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
-    }
-    function showMessage() {
-      const msg = document.getElementById('hiddenMessage');
-      msg.style.display = 'block';
-    }
+   document.addEventListener("DOMContentLoaded", () => {
 
-    const starContainer = document.getElementById('star-container');
+  /* ===== SCROLL ===== */
+  window.scrollToSection = function () {
+    const target = document.getElementById("main-content");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  /* ===== STAR EFFECT ===== */
+  const starContainer = document.getElementById("star-container");
+  if (starContainer) {
     for (let i = 0; i < 50; i++) {
-      let star = document.createElement('span');
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      const star = document.createElement("span");
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDuration = Math.random() * 3 + 2 + "s";
       starContainer.appendChild(star);
     }
+  }
 
-    const heartContainer = document.getElementById('heart-container');
-    const hearts = ['💖','💗','💘','💕','💞'];/**;**/
+  /* ===== HEART RAIN ===== */
+  const heartContainer = document.getElementById("heart-container");
+  if (heartContainer) {
+    const hearts = ["💖", "💗", "💘", "💕", "💞"];
     for (let i = 0; i < 20; i++) {
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-      span.style.left = Math.random() * 100 + '%';
-      span.style.animationDuration = (Math.random() * 5 + 3) + 's';
-      span.style.top = '-' + Math.random() * 20 + 'px';
+      span.style.left = Math.random() * 100 + "%";
+      span.style.animationDuration = Math.random() * 5 + 3 + "s";
+      span.style.top = "-" + Math.random() * 20 + "px";
       heartContainer.appendChild(span);
     }
- const audio = document.getElementById("mainAudio");
+  }
+ /* ===== AUDIO PLAYER ===== */
+  const audio = document.getElementById("mainAudio");
+  if (!audio) return;
 
-const playlists = {
+  const playlists = {
   playlists01: [
  
   ],
@@ -333,6 +343,7 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
+
 
 
 
