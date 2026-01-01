@@ -325,27 +325,33 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
     mysticTexts[mysticIndex].classList.add("active");
 
   }, 4500);
-function startExperience() {
-  scrollToSection();
+
+const audio = document.getElementById("mainAudio");
+
+let firstTouchDone = false;
+
+function unlockAndPlay() {
+  if (firstTouchDone) return;
+
+  firstTouchDone = true;
+
+  audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
+
+  audio.play().then(() => {
+    console.log("🎵 Phép Màu đã phát sau chạm đầu tiên");
+  }).catch(err => {
+    console.log("iOS chặn:", err);
+  });
+
+  document.removeEventListener("touchstart", unlockAndPlay);
+  document.removeEventListener("click", unlockAndPlay);
 }
-let iosUnlocked = false;
 
-function startExperience() {
-  scrollToSection();
 
-  if (!iosUnlocked) {
-    audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
+document.addEventListener("touchstart", unlockAndPlay, { once: true });
+document.addEventListener("click", unlockAndPlay, { once: true });
 
-    audio.play().then(() => {
-      audio.pause();       // chỉ unlock
-      audio.currentTime = 0;
-      iosUnlocked = true;
-      console.log("iOS audio unlocked");
-    }).catch(err => {
-      console.log("iOS unlock fail:", err);
-    });
-  }
-}
+
 
 
 
