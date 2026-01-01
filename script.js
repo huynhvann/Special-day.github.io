@@ -221,7 +221,7 @@ function closePopup() {
 
 const hintText = "👉 Em click vào hình để nghe nha =)))";
 let hintElement = document.getElementById("typingHint");
-
+let hintIndex = 0;
 function loopTyping() {
   if (hintIndex <= hintText.length) {
     hintElement.innerHTML = hintText.slice(0, hintIndex);
@@ -327,20 +327,19 @@ const mysticTexts = document.querySelectorAll(".mystic-text");
 
   }, 4500);
 
-const audio = document.getElementById("mainAudio");
 
 let firstTouchDone = false;
 
 function unlockAndPlay() {
   if (firstTouchDone) return;
-
   firstTouchDone = true;
 
-  audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
 
-  audio.play().then(() => {
-    console.log("🎵 Phép Màu đã phát sau chạm đầu tiên");
-  }).catch(err => {
+  if (!audio.src || audio.src === "") {
+    audio.src = "assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3";
+  }
+
+  audio.play().catch(err => {
     console.log("iOS chặn:", err);
   });
 
@@ -348,9 +347,10 @@ function unlockAndPlay() {
   document.removeEventListener("click", unlockAndPlay);
 }
 
+document.addEventListener("touchstart", unlockAndPlay);
+document.addEventListener("click", unlockAndPlay);
 
-document.addEventListener("touchstart", unlockAndPlay, { once: true });
-document.addEventListener("click", unlockAndPlay, { once: true });
+
 
 
 
