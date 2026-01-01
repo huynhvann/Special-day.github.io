@@ -17,15 +17,9 @@
     window.location.replace("index.html");
   }
 </script>
-  <script>
-document.addEventListener("touchstart", () => {
-  const audio = document.getElementById("mainAudio");
-  audio.muted = false;
-  audio.play();
-}, { once: true });
-</script>
+
 <!-- Audio -->
-<audio id="mainAudio" playsinline autoplay muted loop  >
+<audio id="mainAudio" playsinline>
   <source src="assets/music/Phép Màu (Đàn cá gỗ OST) - MAYDAYs ft. Minh Tốc  Offical MV.mp3" type="audio/mpeg">
 </audio>
 
@@ -42,7 +36,7 @@ document.addEventListener("touchstart", () => {
     margin-bottom: 10px;
     animation: fadeInDown 2s ease-out;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.3);">Hãy cùng mở ra bất ngờ nho nhỏ nhé 🌙</p>
-    <button onclick="scrollToSection()">Khám phá ngay</button>
+    <button onclick="startExperience()">Khám phá ngay</button>
   </header>
 
   <section id="main-content">
