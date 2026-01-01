@@ -1,43 +1,33 @@
-   document.addEventListener("DOMContentLoaded", () => {
-
-  /* ===== SCROLL ===== */
-  window.scrollToSection = function () {
-    const target = document.getElementById("main-content");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+    function scrollToSection() {
+      document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
     }
-  };
+    function showMessage() {
+      const msg = document.getElementById('hiddenMessage');
+      msg.style.display = 'block';
+    }
 
-  /* ===== STAR EFFECT ===== */
-  const starContainer = document.getElementById("star-container");
-  if (starContainer) {
+    const starContainer = document.getElementById('star-container');
     for (let i = 0; i < 50; i++) {
-      const star = document.createElement("span");
-      star.style.left = Math.random() * 100 + "%";
-      star.style.top = Math.random() * 100 + "%";
-      star.style.animationDuration = Math.random() * 3 + 2 + "s";
+      let star = document.createElement('span');
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
       starContainer.appendChild(star);
     }
-  }
 
-  /* ===== HEART RAIN ===== */
-  const heartContainer = document.getElementById("heart-container");
-  if (heartContainer) {
-    const hearts = ["💖", "💗", "💘", "💕", "💞"];
+    const heartContainer = document.getElementById('heart-container');
+    const hearts = ['💖','💗','💘','💕','💞'];/**;**/
     for (let i = 0; i < 20; i++) {
-      const span = document.createElement("span");
+      const span = document.createElement('span');
       span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-      span.style.left = Math.random() * 100 + "%";
-      span.style.animationDuration = Math.random() * 5 + 3 + "s";
-      span.style.top = "-" + Math.random() * 20 + "px";
+      span.style.left = Math.random() * 100 + '%';
+      span.style.animationDuration = (Math.random() * 5 + 3) + 's';
+      span.style.top = '-' + Math.random() * 20 + 'px';
       heartContainer.appendChild(span);
     }
-  }
- /* ===== AUDIO PLAYER ===== */
-  const audio = document.getElementById("mainAudio");
-  if (!audio) return;
+ const audio = document.getElementById("mainAudio");
 
-  const playlists = {
+const playlists = {
   playlists01: [
  
   ],
@@ -198,25 +188,17 @@ audio.addEventListener("ended", () => {
  let i = 0;
 let typingTimer = null;
 
-const message = `Hơi zô tri nhưng Mai hãy đọc nhaaa
+const message = `Hơi zô tri nhưng hãy đọc nhaaa
 
-Mai nè, 
+Mai à, có lẽ đây là lần đầu tiên Văn làm điều này, Văn không biết nên bắt đầu từ đâu. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn chưa bao giờ rung động như thế. Mai là người khiến Văn lúc nào cũng muốn gặp, muốn ở bên, muốn tìm hiểu, muốn bảo vệ và chăm sóc.
 
-Có lẽ đây là lần đầu tiên Văn làm những điều như thế này, nên có lẽ Văn không biết nên bắt đầu từ đâu cho nó trọn vẹn và hoàn hảo cả. Chỉ biết rằng từ ngày đầu tiên về Long Thành, trái tim Văn đã bắt đầu rung động lúc nào hong hay. 
+Không hiểu vì sao, nhưng mỗi ngày trôi qua, Văn luôn tìm lý do để được gần Mai hơn một chút. Những phút giây bên Mai, dù chỉ là những điều đơn giản, cũng đủ khiến Văn cảm thấy bình yên và hạnh phúc.
 
-Trong khoản thời gian đó, suy nghĩ của Văn là lúc nào cũng muốn được thấy Mai, muốn gặp Mai, muốn ở bên và tìm hiểu Mai nhiều hơn. Ròiiiii dần dần, những cảm xúc ấy lớn lên thành mong muốn được bảo vệ, chăm sóc và quan tâm Mai nhiều hơn nữa.
+Văn không biết tương lai sẽ thế nào, nhưng hiện tại, Văn chỉ muốn Mai hiểu rằng, dù chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm tất cả trong khả năng để Mai luôn vui vẻ và hạnh phúc.
 
-Xin lũi nếu điều đó được cho là tham lam =)))
+💫 Con nợ tên Văn nhưng không cóa giỏi văn nên bạn Mike bỏ qua nhennn =))))
 
-Chính vì vậy mà mỗi ngày trôi qua, Văn luôn tìm cho mình một lý do để được gần Mai hơn một chút. Những khoảng khắc bên cạnh Mai, dù chỉ là những điều rất đơn giản, cũng đủ khiến Văn cảm thấy vui và hạnh phúc.
-
-Văn không dám nói trước tương lai sẽ thế nào, nhưng ở thời điểm hiện tại, Văn chỉ mong Mai hiểu rằng:
-
-"Dù có chuyện gì xảy ra, Văn sẽ luôn ở đây, yêu Mai hết mình và làm hết khả năng để Mai luôn thật vui vẻ và thật hạnh phúc"
-
-💫 Con nợ tên Văn, không giỏi văn cho lắm, nên bạn Mike bỏ qua nha =))))
-
-💫 Nhưng con nợ lại rất giỏi… yêu chủ nợ thoiiiii =))))) 💖`;
+💫 Con nợ chỉ giỏi Yêuuuu chủ nợ thoiiiii =))))) 💖`;
 
 function typeMessage() {
   const typedMessage = document.getElementById('typedMessage');
@@ -248,8 +230,20 @@ function closePopup() {
 }
 
 
+const hintText = "👉 Em click vào hình để nghe nha =)))";
+let hintElement = document.getElementById("typingHint");
 
-
+function loopTyping() {
+  if (hintIndex <= hintText.length) {
+    hintElement.innerHTML = hintText.slice(0, hintIndex);
+    hintIndex++;
+    setTimeout(loopTyping, 50);
+  } else {
+    hintIndex = 0;
+    setTimeout(loopTyping, 800); // nghỉ 0.8 giây trước khi lặp
+  }
+}
+loopTyping();
     
 function showRatingMessage() {
     const value = document.getElementById("rating-select").value;
@@ -300,7 +294,6 @@ function askQuestion() {
       '6 tháng 9',
       '6/09',
       'ngày Văn gặp Mai',
-      '0609',
       'ngày văn gặp mai'
     ];
 
@@ -332,19 +325,14 @@ function askQuestion() {
     }
   });
 }
+const mysticTexts = document.querySelectorAll(".mystic-text");
+  let mysticIndex = 0;
 
+  setInterval(() => {
+    mysticTexts[mysticIndex].classList.remove("active");
 
+    mysticIndex = (mysticIndex + 1) % mysticTexts.length;
 
+    mysticTexts[mysticIndex].classList.add("active");
 
-
-
-
-
-
-
-
-
-
-
-
-
+  }, 4500);
