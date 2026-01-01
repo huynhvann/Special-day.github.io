@@ -332,17 +332,8 @@ function askQuestion() {
     }
   });
 }
-const mysticTexts = document.querySelectorAll(".mystic-text");
-  let mysticIndex = 0;
 
-  setInterval(() => {
-    mysticTexts[mysticIndex].classList.remove("active");
 
-    mysticIndex = (mysticIndex + 1) % mysticTexts.length;
-
-    mysticTexts[mysticIndex].classList.add("active");
-
-  }, 4500);
 
 
 
